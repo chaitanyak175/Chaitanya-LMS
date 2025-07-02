@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/logo.png";
@@ -7,7 +6,6 @@ import { ThemeToggle } from "@/components/ui/themeToggle";
 import { authClient } from "@/lib/auth-client";
 import { buttonVariants } from "@/components/ui/button";
 import UserDropdown from "./UserDropdown";
-import { UserRound } from "lucide-react";
 
 const navigationItems = [
     { name: "Home", href: "/" },
