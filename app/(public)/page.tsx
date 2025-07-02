@@ -82,7 +82,7 @@ export default function Home() {
                             })}
                         >
                             Explore Courses
-                        </Link>{" "}
+                        </Link>
                         <>
                             {session ? (
                                 <></>
@@ -100,26 +100,24 @@ export default function Home() {
                         </>
                     </div>
                 </div>
-                <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {features.map((feature, index) => (
-                        <Card
-                            key={index}
-                            className="hover:shadow-lg transition-shadow"
-                        >
-                            <CardHeader>
-                                <div className="text-4xl mb-4">
-                                    {feature.icon}
-                                </div>
-                                <CardTitle>{feature.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-muted-foreground">
-                                    {feature.description}
-                                </p>
-                            </CardContent>
-                        </Card>
-                    ))}
-                </section>
+            </section>
+            <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {features.map((feature, index) => (
+                    <Card
+                        key={index}
+                        className="hover:shadow-lg transition-shadow"
+                    >
+                        <CardHeader>
+                            <div className="text-4xl mb-4">{feature.icon}</div>
+                            <CardTitle>{feature.title}</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <p className="text-muted-foreground">
+                                {feature.description}
+                            </p>
+                        </CardContent>
+                    </Card>
+                ))}
             </section>
         </>
     );
