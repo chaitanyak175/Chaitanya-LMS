@@ -1,9 +1,7 @@
 // app/(auth)/verify-request/page.tsx
-import dynamic from "next/dynamic";
+import VerifyRequestClient from "./verify-request-client";
 
-const VerifyRequestClient = dynamic(() => import("./verify-request-client"), {
-    ssr: false,
-});
+export const dynamic = "force-dynamic"; // prevent static rendering
 
 export default function VerifyRequestPage() {
     return <VerifyRequestClient />;
