@@ -20,14 +20,13 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
             </Link>
             <div className="flex w-full max-w-sm flex-col gap-6">
                 <Link
-                    className="flex items-center gap-0 self-center font-medium font-sans text-2xl"
+                    className="flex items-center gap-2 self-center font-medium font-sans text-2xl"
                     href="/"
                 >
                     <Image
                         src={Logo}
                         alt="Logo"
-                        width={88}
-                        height={88}
+                        className="size-8"
                         quality={100}
                     />
                     Chaitanya LMS

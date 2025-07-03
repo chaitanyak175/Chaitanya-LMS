@@ -112,7 +112,7 @@ export function Navbar() {
                             href="#"
                             className="text-primary hover:text-primary/90"
                         >
-                            <Image src={Logo} alt="Logo" className="size-9" />
+                            <Image src={Logo} alt="Logo" className="size-7" />
                         </a>
                         {/* Navigation menu */}
                         <NavigationMenu className="max-md:hidden">
