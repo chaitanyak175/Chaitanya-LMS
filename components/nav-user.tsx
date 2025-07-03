@@ -1,11 +1,9 @@
 "use client";
 
 import {
-    IconCreditCard,
+    IconDashboard,
     IconDotsVertical,
     IconLogout,
-    IconNotification,
-    IconUserCircle,
 } from "@tabler/icons-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -25,10 +23,14 @@ import {
     useSidebar,
 } from "@/components/ui/sidebar";
 import { authClient } from "@/lib/auth-client";
+import Link from "next/link";
+import { HomeIcon, Tv2 } from "lucide-react";
+import { useSignOut } from "@/hooks/use-signout";
 
 export function NavUser() {
     const { isMobile } = useSidebar();
     const { data: session, isPending } = authClient.useSession();
+    const handleSignOut = useSignOut();
 
     if (isPending) {
         return null;
@@ -43,7 +45,7 @@ export function NavUser() {
                             size="lg"
                             className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
                         >
-                            <Avatar className="h-8 w-8 rounded-lg grayscale">
+                            <Avatar className="h-8 w-8 rounded-lg">
                                 <AvatarImage
                                     src={
                                         session?.user.image ??
@@ -73,7 +75,7 @@ export function NavUser() {
                                     {session?.user.email}
                                 </span>
                             </div>
-                            <IconDotsVertical className="ml-auto size-4" />
+                            <IconDotsVertical className="ml-auto size-4 cursor-pointer" />
                         </SidebarMenuButton>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent
@@ -118,21 +120,39 @@ export function NavUser() {
                         </DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuGroup>
-                            <DropdownMenuItem>
-                                <IconUserCircle />
-                                Account
+                            <DropdownMenuItem
+                                asChild
+                                className="cursor-pointer"
+                            >
+                                <Link href="/">
+                                    <HomeIcon />
+                                    Homepage
+                                </Link>
                             </DropdownMenuItem>
-                            <DropdownMenuItem>
-                                <IconCreditCard />
-                                Billing
+                            <DropdownMenuItem
+                                asChild
+                                className="cursor-pointer"
+                            >
+                                <Link href="/admin">
+                                    <IconDashboard />
+                                    Dashboard
+                                </Link>
                             </DropdownMenuItem>
-                            <DropdownMenuItem>
-                                <IconNotification />
-                                Notifications
+                            <DropdownMenuItem
+                                asChild
+                                className="cursor-pointer"
+                            >
+                                <Link href="/admin/courses">
+                                    <Tv2 />
+                                    Courses
+                                </Link>
                             </DropdownMenuItem>
                         </DropdownMenuGroup>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>
+                        <DropdownMenuItem
+                            onClick={handleSignOut}
+                            className="cursor-pointer"
+                        >
                             <IconLogout />
                             Log out
                         </DropdownMenuItem>

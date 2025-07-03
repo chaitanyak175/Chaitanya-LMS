@@ -23,7 +23,7 @@ import { usePathname } from "next/navigation";
 const navigationItems = [
     { name: "Home", href: "/" },
     { name: "Courses", href: "/courses" },
-    { name: "Dashboard", href: "/dashboard" },
+    { name: "Dashboard", href: "/admin" },
 ];
 
 export function Navbar() {
