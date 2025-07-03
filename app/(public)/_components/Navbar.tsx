@@ -18,7 +18,7 @@ import {
     NavigationMenuLink,
     NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const navigationItems = [
     { name: "Home", href: "/" },
@@ -29,10 +29,6 @@ const navigationItems = [
 export function Navbar() {
     const { data: session, isPending } = authClient.useSession();
     const pathname = usePathname();
-    const searchParams = useSearchParams();
-
-    console.log("Live Pathname:", pathname);
-    console.log("Live SearchParams:", searchParams.toString());
 
     const isActiveRoute = (href: string) => {
         if (href === "/") {
