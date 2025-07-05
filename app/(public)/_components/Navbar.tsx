@@ -114,27 +114,30 @@ export function Navbar() {
                         >
                             <Image src={Logo} alt="Logo" className="size-7" />
                         </a>
-                        {/* Navigation menu */}
-                        <NavigationMenu className="max-md:hidden">
-                            <NavigationMenuList className="gap-2">
-                                {navigationItems.map((link, index) => (
-                                    <NavigationMenuItem key={index}>
-                                        <NavigationMenuLink
-                                            active={isActiveRoute(link.href)}
-                                            href={link.href}
-                                            className={`py-1.5 font-medium ${
-                                                isActiveRoute(link.href)
-                                                    ? "text-primary bg-muted shadow-xl text-green-700"
-                                                    : "text-muted-foreground hover:text-primary"
-                                            }`}
-                                        >
-                                            {link.name}
-                                        </NavigationMenuLink>
-                                    </NavigationMenuItem>
-                                ))}
-                            </NavigationMenuList>
-                        </NavigationMenu>
                     </div>
+                </div>
+
+                <div className="absolute left-1/2 -translate-x-1/2 max-md:hidden">
+                    {/* Navigation menu */}
+                    <NavigationMenu>
+                        <NavigationMenuList className="gap-4">
+                            {navigationItems.map((link, index) => (
+                                <NavigationMenuItem key={index}>
+                                    <NavigationMenuLink
+                                        active={isActiveRoute(link.href)}
+                                        href={link.href}
+                                        className={`py-1.5 font-medium ${
+                                            isActiveRoute(link.href)
+                                                ? "text-primary bg-muted shadow-xl text-green-700"
+                                                : "text-muted-foreground hover:text-primary"
+                                        }`}
+                                    >
+                                        {link.name}
+                                    </NavigationMenuLink>
+                                </NavigationMenuItem>
+                            ))}
+                        </NavigationMenuList>
+                    </NavigationMenu>
                 </div>
 
                 <div className="flex items-center space-x-4">
