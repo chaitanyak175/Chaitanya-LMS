@@ -93,10 +93,10 @@ export function Navbar() {
                                         >
                                             <NavigationMenuLink
                                                 href={link.href}
-                                                className="py-1.5"
                                                 active={isActiveRoute(
                                                     link.href
                                                 )}
+                                                className="py-1.5 font-medium text-muted-foreground hover:text-primary data-[active=true]:text-foreground data-[active=true]:bg-muted rounded-md px-2"
                                             >
                                                 {link.name}
                                             </NavigationMenuLink>
@@ -124,7 +124,7 @@ export function Navbar() {
                                             href={link.href}
                                             className={`py-1.5 font-medium ${
                                                 isActiveRoute(link.href)
-                                                    ? "text-primary"
+                                                    ? "text-primary bg-muted shadow-xl text-green-700"
                                                     : "text-muted-foreground hover:text-primary"
                                             }`}
                                         >
