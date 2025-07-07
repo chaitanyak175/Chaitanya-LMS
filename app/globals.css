@@ -1,44 +1,52 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@plugin "@tailwindcss/typography";
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
-    --background: oklch(0.9911 0 0);
-    --foreground: oklch(0.2046 0 0);
-    --card: oklch(0.9911 0 0);
-    --card-foreground: oklch(0.2046 0 0);
-    --popover: oklch(0.9911 0 0);
-    --popover-foreground: oklch(0.4386 0 0);
-    --primary: oklch(0.8289 0.1744 157.3903);
-    --primary-foreground: oklch(0.2626 0.0147 166.4589);
-    --secondary: oklch(0.994 0 0);
-    --secondary-foreground: oklch(0.2046 0 0);
-    --muted: oklch(0.9461 0 0);
-    --muted-foreground: oklch(0.2435 0 0);
-    --accent: oklch(0.9461 0 0);
-    --accent-foreground: oklch(0.2435 0 0);
+    --background: oklch(0.9818 0.0054 95.0986);
+    --foreground: oklch(0.3438 0.0269 95.7226);
+    --card: oklch(0.9818 0.0054 95.0986);
+    --card-foreground: oklch(0.1908 0.002 106.5859);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.2671 0.0196 98.939);
+    --primary: oklch(0.6418 0.154 154.8395);
+    --primary-foreground: oklch(1 0 0);
+    --secondary: oklch(0.9245 0.0138 92.9892);
+    --secondary-foreground: oklch(0.4334 0.0177 98.6048);
+    --muted: oklch(0.9341 0.0153 90.239);
+    --muted-foreground: oklch(0.6059 0.0075 97.4233);
+    --accent: oklch(0.9245 0.0138 92.9892);
+    --accent-foreground: oklch(0.2671 0.0196 98.939);
     --destructive: oklch(0.5523 0.1927 32.7272);
     --destructive-foreground: oklch(0.9934 0.0032 17.2118);
-    --border: oklch(0.9037 0 0);
-    --input: oklch(0.9731 0 0);
+    --border: oklch(0.8847 0.0069 97.3627);
+    --input: oklch(0.7621 0.0156 98.3528);
     --ring: oklch(0.8348 0.1302 160.908);
     --chart-1: oklch(0.8348 0.1302 160.908);
     --chart-2: oklch(0.6231 0.188 259.8145);
     --chart-3: oklch(0.6056 0.2189 292.7172);
     --chart-4: oklch(0.7686 0.1647 70.0804);
     --chart-5: oklch(0.6959 0.1491 162.4796);
-    --sidebar: oklch(0.9911 0 0);
-    --sidebar-foreground: oklch(0.5452 0 0);
+    --sidebar: oklch(0.9663 0.008 98.8792);
+    --sidebar-foreground: oklch(0.359 0.0051 106.6524);
     --sidebar-primary: oklch(0.8348 0.1302 160.908);
-    --sidebar-primary-foreground: oklch(0.2626 0.0147 166.4589);
-    --sidebar-accent: oklch(0.9461 0 0);
-    --sidebar-accent-foreground: oklch(0.2435 0 0);
-    --sidebar-border: oklch(0.9037 0 0);
+    --sidebar-primary-foreground: oklch(0.9881 0 0);
+    --sidebar-accent: oklch(0.9245 0.0138 92.9892);
+    --sidebar-accent-foreground: oklch(0.325 0 0);
+    --sidebar-border: oklch(0.9401 0 0);
     --sidebar-ring: oklch(0.8348 0.1302 160.908);
-    --font-sans: Outfit, sans-serif;
+    --font-sans:
+        ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
     --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-    --font-mono: monospace;
+    --font-mono:
+        ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
     --radius: 0.15rem;
     --shadow-2xs: 0px 1px 3px 0px hsl(0 0% 0% / 0.09);
     --shadow-xs: 0px 1px 3px 0px hsl(0 0% 0% / 0.09);
@@ -95,9 +103,15 @@
     --sidebar-accent-foreground: oklch(0.9851 0 0);
     --sidebar-border: oklch(0.2809 0 0);
     --sidebar-ring: oklch(0.8003 0.1821 151.711);
-    --font-sans: Outfit, sans-serif;
+    --font-sans:
+        ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
     --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-    --font-mono: monospace;
+    --font-mono:
+        ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
     --radius: 0.15rem;
     --shadow-2xs: 0px 1px 3px 0px hsl(0 0% 0% / 0.09);
     --shadow-xs: 0px 1px 3px 0px hsl(0 0% 0% / 0.09);
