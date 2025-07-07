@@ -128,7 +128,7 @@ export function Navbar() {
                                         href={link.href}
                                         className={`py-1.5 font-medium ${
                                             isActiveRoute(link.href)
-                                                ? "text-primary bg-muted shadow-xl text-green-700"
+                                                ? "bg-muted shadow-xl text-green-700"
                                                 : "text-muted-foreground hover:text-primary"
                                         }`}
                                     >
