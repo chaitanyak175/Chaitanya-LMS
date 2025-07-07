@@ -1,35 +1,35 @@
 # Chaitanya LMS
 
-![GitHub repo size](https://img.shields.io/github/repo-size/chaitanyadesign/chaitanya-lms)
-![GitHub stars](https://img.shields.io/github/stars/chaitanyadesign/chaitanya-lms)
-![GitHub forks](https://img.shields.io/github/forks/chaitanyadesign/chaitanya-lms)
-![Licence](https://img.shields.io/github/license/chaitanyadesign/chaitanya-lms)
+![GitHub stars](https://img.shields.io/github/stars/chaitanyak175/Chaitanya-LMS?style=social)
+![GitHub forks](https://img.shields.io/github/forks/chaitanyak175/Chaitanya-LMS?style=social)
+![Repo size](https://img.shields.io/github/repo-size/chaitanyak175/Chaitanya-LMS)
+![GitHub license](https://img.shields.io/github/license/chaitanyak175/Chaitanya-LMS)
 
 **Chaitanya LMS** is a modern, open-source Learning Management System designed to provide a seamless and intuitive experience for both students and instructors. Built with a powerful stack including Next.js, Prisma, and Tailwind CSS, it offers a robust platform for creating, managing, and enrolling in online courses.
 
 ## ✨ Key Features
 
--   **🔐 Secure User Authentication**: End-to-end authentication with sign-up, login, and session management, including OAuth with GitHub.
--   **👨‍💻 Admin Dashboard**: A comprehensive interface for administrators to manage courses, users, and site-wide settings.
--   **📚 Course Management**: Full CRUD functionality for courses, allowing instructors to easily create, update, and organize content.
--   **🎨 Interactive & Responsive UI**: A polished and accessible user interface built with **Radix UI** and **shadcn/ui**, ensuring a great experience on all devices.
--   **✉️ Email Notifications**: Automated email delivery for key events like user registration and course updates, powered by **Resend**.
--   **🔒 Type-Safe & Validated**: End-to-end type safety with TypeScript, along with robust form and environment variable validation using **Zod** and **T3 Env**.
--   **🛡️ Security-First**: Includes rate limiting and bot protection with **Arcjet** to secure sensitive endpoints.
+- **🔐 Secure User Authentication**: End-to-end authentication with sign-up, login, and session management, including OAuth with GitHub.
+- **👨‍💻 Admin Dashboard**: A comprehensive interface for administrators to manage courses, users, and site-wide settings.
+- **📚 Course Management**: Full CRUD functionality for courses, allowing instructors to easily create, update, and organize content.
+- **🎨 Interactive & Responsive UI**: A polished and accessible user interface built with **Radix UI** and **shadcn/ui**, ensuring a great experience on all devices.
+- **✉️ Email Notifications**: Automated email delivery for key events like user registration and course updates, powered by **Resend**.
+- **🔒 Type-Safe & Validated**: End-to-end type safety with TypeScript, along with robust form and environment variable validation using **Zod** and **T3 Env**.
+- **🛡️ Security-First**: Includes rate limiting and bot protection with **Arcjet** to secure sensitive endpoints.
 
 ## 🛠️ Tech Stack
 
-| Category              | Technology                                                                                             |
-| --------------------- | ------------------------------------------------------------------------------------------------------ |
-| **Framework**         | [Next.js](https://nextjs.org/)                                                                         |
-| **Styling**           | [Tailwind CSS](https://tailwindcss.com/)                                                               |
+| Category              | Technology                                                                                                      |
+| --------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Framework**         | [Next.js](https://nextjs.org/)                                                                                  |
+| **Styling**           | [Tailwind CSS](https://tailwindcss.com/)                                                                        |
 | **UI Components**     | [Radix UI](https://www.radix-ui.com/), [shadcn/ui](https://ui.shadcn.com/), [Lucide Icons](https://lucide.dev/) |
-| **Database ORM**      | [Prisma](https://www.prisma.io/)                                                                       |
-| **Authentication**    | [better-auth](https://www.npmjs.com/package/better-auth)                                                |
-| **Schema Validation** | [Zod](https://zod.dev/), [T3 Env](https://env.t3.gg/)                                                   |
-| **Email Service**     | [Resend](https://resend.com/)                                                                          |
-| **Security**          | [Arcjet](https://arcjet.com/)                                                                          |
-| **Deployment**        | [Vercel](https://vercel.com/)                                                                          |
+| **Database ORM**      | [Prisma](https://www.prisma.io/)                                                                                |
+| **Authentication**    | [better-auth](https://www.npmjs.com/package/better-auth)                                                        |
+| **Schema Validation** | [Zod](https://zod.dev/), [T3 Env](https://env.t3.gg/)                                                           |
+| **Email Service**     | [Resend](https://resend.com/)                                                                                   |
+| **Security**          | [Arcjet](https://arcjet.com/)                                                                                   |
+| **Deployment**        | [Vercel](https://vercel.com/)                                                                                   |
 
 ## 🚀 Getting Started
 
@@ -37,29 +37,34 @@ Follow these instructions to set up the project locally for development and test
 
 ### Prerequisites
 
--   [Node.js](https://nodejs.org/en/) (v20 or later)
--   [pnpm](https://pnpm.io/installation)
--   A PostgreSQL database (local or remote)
+- [Node.js](https://nodejs.org/en/) (v20 or later)
+- [pnpm](https://pnpm.io/installation)
+- A PostgreSQL database (local or remote)
 
 ### Installation & Setup
 
 1.  **Clone the repository:**
+
     ```bash
     git clone https://github.com/your-username/chaitanya-lms.git
     cd chaitanya-lms
     ```
 
 2.  **Install dependencies:**
+
     ```bash
     pnpm install
     ```
 
 3.  **Set up environment variables:**
     Create a `.env` file in the project root by copying the example file:
+
     ```bash
     cp .env.example .env
     ```
+
     Populate the `.env` file with your credentials. See `lib/env.ts` for a complete list of required variables.
+
     ```env
     # Database
     DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
@@ -77,6 +82,7 @@ Follow these instructions to set up the project locally for development and test
 
 4.  **Run database migrations:**
     This command will synchronize your database schema with the Prisma schema definition.
+
     ```bash
     pnpm prisma migrate dev
     ```
