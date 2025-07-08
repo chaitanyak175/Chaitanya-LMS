@@ -187,7 +187,10 @@ export default function CourseCreationPage() {
                                                 {...field}
                                             /> */}
 
-                                            <Uploader />
+                                            <Uploader
+                                                onChange={field.onChange}
+                                                value={field.value}
+                                            />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>

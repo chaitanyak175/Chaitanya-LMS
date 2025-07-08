@@ -25,7 +25,12 @@ interface UploaderState {
     fileType: "image" | "video";
 }
 
-export function Uploader() {
+interface iAppProps {
+    value?: string;
+    onChange?: (value: string) => void;
+}
+
+export function Uploader({ value, onChange }: iAppProps) {
     const [fileState, setFileState] = useState<UploaderState>({
         id: null,
         file: null,
@@ -34,6 +39,7 @@ export function Uploader() {
         isDeleting: false,
         error: false,
         fileType: "image",
+        key: value,
     });
 
     async function uploadFile(file: File) {
@@ -92,6 +98,9 @@ export function Uploader() {
                             uploading: false,
                             key: key,
                         }));
+
+                        onChange?.(key);
+
                         toast.success("File uploaded successfully");
 
                         resolve();
@@ -148,6 +157,66 @@ export function Uploader() {
         [fileState.objectUrl]
     );
 
+    async function handleRemoveFile() {
+        if (fileState.isDeleting || !fileState.objectUrl) return;
+
+        try {
+            setFileState((currentSelectedFile) => ({
+                ...currentSelectedFile,
+                isDeleting: true,
+            }));
+
+            const response = await fetch("/api/s3/delete", {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    key: fileState.key,
+                }),
+            });
+
+            if (response.ok) {
+                toast.error("Failed to remove file from storage ");
+                setFileState((currentSelectedFile) => ({
+                    ...currentSelectedFile,
+                    isDeleting: true,
+                    error: true,
+                }));
+
+                return;
+            }
+
+            if (
+                fileState.objectUrl &&
+                !fileState.objectUrl.startsWith("http")
+            ) {
+                URL.revokeObjectURL(fileState.objectUrl);
+            }
+
+            onChange?.("");
+
+            setFileState(() => ({
+                file: null,
+                uploading: false,
+                progress: 0,
+                objectUrl: undefined,
+                error: false,
+                fileType: "image",
+                id: null,
+                isDeleting: false,
+            }));
+
+            toast.success("File removed successfully");
+        } catch (error) {
+            toast.error("Error removing file. Please try again");
+
+            setFileState((currentSelectedFile) => ({
+                ...currentSelectedFile,
+                isDeleting: false,
+                error: true,
+            }));
+        }
+    }
+
     function rejectionFiles(fileRejection: FileRejection[]) {
         if (fileRejection.length) {
             const tooManyFiles = fileRejection.find(
@@ -185,7 +254,13 @@ export function Uploader() {
         }
 
         if (fileState.objectUrl) {
-            return <RenderUploadedState previewUrl={fileState.objectUrl} />;
+            return (
+                <RenderUploadedState
+                    handleRemoveFile={handleRemoveFile}
+                    previewUrl={fileState.objectUrl}
+                    isDeleting={fileState.isDeleting}
+                />
+            );
         }
 
         return <RenderEmptyState isDragActive={isDragActive} />;
@@ -209,6 +284,7 @@ export function Uploader() {
         multiple: false,
         maxSize: 5 * 1024 * 1024, // 5 mb Calculation
         onDropRejected: rejectionFiles,
+        disabled: fileState.uploading || !!fileState.objectUrl,
     });
 
     return (
