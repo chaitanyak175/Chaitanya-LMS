@@ -78,6 +78,14 @@ Follow these instructions to set up the project locally for development and test
     # Services
     RESEND_API_KEY="your_resend_api_key"
     ARCJET_KEY="your_arcjet_key"
+
+    # AWS S3
+    AWS_ACCESS_KEY_ID="your_aws_access_key_id"
+    AWS_SECRET_ACCESS_KEY="your_aws_secret_access_key"
+    AWS_ENDPOINT_URL_S3="your_aws_s3_endpoint_url"
+    AWS_ENDPOINT_URL_IAM="your_aws_iam_endpoint_url"
+    AWS_REGION="your_aws_region"
+    NEXT_PUBLIC_S3_NAME_IMAGES="your_s3_bucket_name_for_images"
     ```
 
 4.  **Run database migrations:**
