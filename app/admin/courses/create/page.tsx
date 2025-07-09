@@ -153,7 +153,7 @@ export default function CourseCreationPage() {
                                 />
                                 <Button
                                     type="button"
-                                    className="w-fit"
+                                    className="w-fit cursor-pointer"
                                     onClick={() => {
                                         const titleValue =
                                             form.getValues("title");
@@ -358,16 +358,22 @@ export default function CourseCreationPage() {
                                 )}
                             />
 
-                            <Button type="submit" disabled={isPending}>
+                            <Button
+                                type="submit"
+                                disabled={isPending}
+                                className="cursor-pointer"
+                            >
                                 {isPending ? (
                                     <>
                                         <Loader className="size-4 animate-spin" />
                                         Creating...
                                     </>
                                 ) : (
-                                    <p> Create Course</p>
+                                    <>
+                                        <p> Create Course</p>
+                                        <PlusIcon className="ml-1" size={16} />
+                                    </>
                                 )}
-                                <PlusIcon className="ml-1" size={16} />
                             </Button>
                         </form>
                     </Form>
