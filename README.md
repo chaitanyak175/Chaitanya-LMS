@@ -7,6 +7,8 @@
 
 **Chaitanya LMS** is a modern, open-source Learning Management System designed to provide a seamless and intuitive experience for both students and instructors. Built with a powerful stack including Next.js, Prisma, and Tailwind CSS, it offers a robust platform for creating, managing, and enrolling in online courses.
 
+**View the live demo → [chaitanya-lms.vercel.app](https://chaitanya-lms.vercel.app/)**
+
 ## ✨ Key Features
 
 - **🔐 Secure User Authentication**: End-to-end authentication with sign-up, login, and session management, including OAuth with GitHub.
