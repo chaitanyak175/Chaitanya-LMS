@@ -23,7 +23,7 @@ export function RichTextEditor({ field }: { field: any }) {
         },
 
         onUpdate: ({ editor }) => {
-            field.onChange(JSON.stringify(editor.getJSON));
+            field.onChange(JSON.stringify(editor.getJSON()));
         },
 
         content: field.value
