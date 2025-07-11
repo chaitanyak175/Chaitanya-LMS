@@ -80,9 +80,10 @@ export async function POST(request: Request) {
         };
 
         return NextResponse.json(response);
-    } catch {
+    } catch (error) {
+        console.error("Presigned URL generation failed:", error);
         return NextResponse.json(
-            { error: "Failed to generate presigned URL" },
+            { error: "Failed to generate presigned URL." },
             { status: 500 }
         );
     }

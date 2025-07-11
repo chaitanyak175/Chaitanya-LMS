@@ -60,9 +60,10 @@ export async function DELETE(request: Request) {
             { message: "File deleted successfully" },
             { status: 200 }
         );
-    } catch {
+    } catch (error) {
+        console.error("S3 deletion error:", error);
         return NextResponse.json(
-            { message: "Missing or Invalid object key" },
+            { error: "Failed to delete object." },
             { status: 500 }
         );
     }
