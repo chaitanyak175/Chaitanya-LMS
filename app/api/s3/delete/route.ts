@@ -27,22 +27,21 @@ export async function DELETE(request: Request) {
     });
 
     try {
-        const descision = await aj.protect(request, {
+        const decision = await aj.protect(request, {
             fingerprint: session?.user.id as string,
         });
 
-        if (descision.isDenied()) {
+        if (decision.isDenied()) {
             return NextResponse.json(
-                { error: "Try again later." },
+                { error: "Too many requests. Please try again later." },
                 { status: 429 }
             );
         }
 
         const body = await request.json();
-
         const key = body.key;
 
-        if (!key) {
+        if (!key || typeof key !== "string") {
             NextResponse.json(
                 { error: "Missing or Invalid object" },
                 { status: 400 }

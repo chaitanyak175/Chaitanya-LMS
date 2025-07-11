@@ -37,30 +37,31 @@ export async function POST(request: Request) {
     });
 
     try {
-        const descision = await aj.protect(request, {
-            fingerprint: session?.user.id as string,
+        const decision = await aj.protect(request, {
+            fingerprint: session?.user.id ?? "anonymous",
         });
 
-        if (descision.isDenied()) {
+        if (decision.isDenied()) {
             return NextResponse.json(
-                { error: "Try again later." },
+                { error: "Too many requests. Please try again later." },
                 { status: 429 }
             );
         }
 
         const body = await request.json();
-
         const validation = fileUploadSchema.safeParse(body);
 
         if (!validation.success) {
             return NextResponse.json(
-                { error: "Invalid request body" },
+                {
+                    error: "Invalid request body",
+                    issues: validation.error.format(),
+                },
                 { status: 400 }
             );
         }
 
         const { fileName, contentType, size } = validation.data;
-
         const uniqueKey = `${uuidv4()}-${fileName}`;
 
         const command = new PutObjectCommand({
