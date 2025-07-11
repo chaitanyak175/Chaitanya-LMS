@@ -56,7 +56,7 @@ export default function VerifyRequest() {
                     Please check your email
                 </CardTitle>
                 <CardDescription>
-                    We've sent a 6-digit verification code to your email
+                    We&apos;ve sent a 6-digit verification code to your email.
                     address. Please check your inbox and enter the code below.
                 </CardDescription>
             </CardHeader>

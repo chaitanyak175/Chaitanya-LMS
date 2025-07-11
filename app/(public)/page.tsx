@@ -4,8 +4,6 @@ import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { toast } from "sonner";
 
 interface featureProps {
     title: string;
@@ -42,19 +40,6 @@ const features: featureProps[] = [
 
 export default function Home() {
     const { data: session } = authClient.useSession();
-
-    const router = useRouter();
-
-    async function signOut() {
-        await authClient.signOut({
-            fetchOptions: {
-                onSuccess: () => {
-                    router.push("/login"); // redirect to login page
-                    toast.success("Signed out Successfully!");
-                },
-            },
-        });
-    }
 
     return (
         <>

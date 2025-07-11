@@ -18,6 +18,9 @@ const eslintConfig = [
             "@next/next/no-img-element": "warn",
         },
     },
+    {
+        ignores: ["lib/generated/**"],
+    }
 ];
 
 export default eslintConfig;

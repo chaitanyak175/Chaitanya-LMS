@@ -17,7 +17,6 @@ import {
 import {
     ArrowLeft,
     Loader,
-    Loader2,
     PlusIcon,
     SparkleIcon,
 } from "lucide-react";

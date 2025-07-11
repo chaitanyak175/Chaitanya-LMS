@@ -5,6 +5,9 @@ import { z } from "zod";
 import { v4 as uuidv4 } from "uuid";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { S3 } from "@/lib/S3Client";
+import arcjet, { detectBot, fixedWindow } from "@/lib/arcjet";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 export const fileUploadSchema = z.object({
     fileName: z.string().min(1, { message: "Filename is required." }),
@@ -13,8 +16,38 @@ export const fileUploadSchema = z.object({
     isImageBoolean: z.boolean(),
 });
 
+const aj = arcjet
+    .withRule(
+        detectBot({
+            mode: "LIVE",
+            allow: [],
+        })
+    )
+    .withRule(
+        fixedWindow({
+            mode: "LIVE",
+            window: "1m",
+            max: 5,
+        })
+    );
+
 export async function POST(request: Request) {
+    const session = await auth.api.getSession({
+        headers: await headers(),
+    });
+
     try {
+        const descision = await aj.protect(request, {
+            fingerprint: session?.user.id as string,
+        });
+
+        if (descision.isDenied()) {
+            return NextResponse.json(
+                { error: "Try again later." },
+                { status: 429 }
+            );
+        }
+
         const body = await request.json();
 
         const validation = fileUploadSchema.safeParse(body);
@@ -47,7 +80,7 @@ export async function POST(request: Request) {
         };
 
         return NextResponse.json(response);
-    } catch (error) {
+    } catch {
         return NextResponse.json(
             { error: "Failed to generate presigned URL" },
             { status: 500 }
