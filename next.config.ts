@@ -17,6 +17,16 @@ const nextConfig: NextConfig = {
         // your project has ESLint errors.
         ignoreDuringBuilds: true,
     },
+
+    images: {
+        remotePatterns: [
+            {
+                hostname: "chaitanya-lms.fly.storage.tigris.dev",
+                port: "",
+                protocol: "https",
+            },
+        ],
+    },
 };
 
 export default nextConfig;
