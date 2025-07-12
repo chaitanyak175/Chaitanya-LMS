@@ -48,7 +48,7 @@ Follow these instructions to set up the project locally for development and test
 1.  **Clone the repository:**
 
     ```bash
-    git clone https://github.com/your-username/chaitanya-lms.git
+    git clone https://github.com/chaitanyak175/chaitanya-lms.git
     cd chaitanya-lms
     ```
 
