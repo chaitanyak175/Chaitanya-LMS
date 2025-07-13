@@ -17,7 +17,7 @@ export async function editCourse(
         if (!result.success) {
             return {
                 status: "error",
-                message: "Invalid data",
+                message: "Invalid course data. Please check your input.",
             };
         }
 
@@ -30,14 +30,16 @@ export async function editCourse(
                 ...result.data,
             },
         });
+
         return {
             status: "success",
             message: "Course updated successfully.",
         };
     } catch (error) {
+        console.error("EditCourse error:", error);
         return {
             status: "error",
-            message: "Failed to update course.",
+            message: "An error occurred while updating the course.",
         };
     }
 }
