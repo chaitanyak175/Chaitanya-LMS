@@ -14,12 +14,7 @@ import {
     CourseSchemaType,
     courseStatus,
 } from "@/lib/zodSchemas";
-import {
-    ArrowLeft,
-    Loader,
-    PlusIcon,
-    SparkleIcon,
-} from "lucide-react";
+import { ArrowLeft, Loader, PlusIcon, SparkleIcon } from "lucide-react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -45,7 +40,7 @@ import { RichTextEditor } from "@/components/rich-text-editor/Editor";
 import { Uploader } from "@/components/file-uploader/Uploader";
 import { useTransition } from "react";
 import { tryCatch } from "@/hooks/try-catch";
-import { CreateCourse } from "./action";
+import { CreateCourse } from "./actions";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
