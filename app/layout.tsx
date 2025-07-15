@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { TwentyFirstToolbar } from "@21st-extension/toolbar-next";
+import { ReactPlugin } from "@21st-extension/react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
@@ -38,6 +40,9 @@ export default function RootLayout({
                 >
                     {children}
                     <Toaster />
+                    {process.env.NODE_ENV === "development" && (
+                        <TwentyFirstToolbar config={{ plugins: [ReactPlugin] }} />
+                    )}
                 </ThemeProvider>
             </body>
         </html>

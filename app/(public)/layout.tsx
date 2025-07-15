@@ -5,9 +5,7 @@ export default function LayoutPublic({ children }: { children: ReactNode }) {
     return (
         <div>
             <Navbar />
-            <main className="container mx-auto px-4 md:px-6 lg:px-8">
-                {children}
-            </main>
+            <main className="mx-auto px-0 md:px-0 lg:px-0">{children}</main>
         </div>
     );
 }
