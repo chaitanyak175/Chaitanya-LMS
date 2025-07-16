@@ -78,27 +78,29 @@ export function Navbar() {
                         </PopoverTrigger>
                         <PopoverContent
                             align="start"
-                            className="w-36 p-1 md:hidden"
+                            className="w-48 p-2 md:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border border-blue-200/20 dark:border-slate-700/50 shadow-xl"
                         >
                             <NavigationMenu className="max-w-none *:w-full">
-                                <NavigationMenuList className="flex-col items-start gap-0 md:gap-2">
+                                <NavigationMenuList className="flex-col items-start gap-1 md:gap-2">
                                     {navigationItems.map((link, index) => (
                                         <NavigationMenuItem
                                             key={index}
-                                            className={`py-1.5 font-medium ${
-                                                isActiveRoute(link.href)
-                                                    ? "text-primary"
-                                                    : "text-muted-foreground hover:text-primary"
-                                            }`}
+                                            className="w-full"
                                         >
                                             <NavigationMenuLink
                                                 href={link.href}
                                                 active={isActiveRoute(
                                                     link.href
                                                 )}
-                                                className="py-1.5 font-medium text-muted-foreground hover:text-primary data-[active=true]:text-foreground data-[active=true]:bg-muted rounded-md px-2"
+                                                className={`w-full px-3 py-2 rounded-lg font-medium transition-all duration-300 relative overflow-hidden block ${
+                                                    isActiveRoute(link.href)
+                                                        ? "bg-gradient-to-r from-blue-500/10 to-emerald-500/10 text-blue-600 dark:text-blue-400 border border-blue-200/30 dark:border-blue-800/30"
+                                                        : "text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-slate-50/50 dark:hover:from-blue-950/20 dark:hover:to-slate-950/20 hover:shadow-md"
+                                                }`}
                                             >
-                                                {link.name}
+                                                <span className="relative z-10">
+                                                    {link.name}
+                                                </span>
                                             </NavigationMenuLink>
                                         </NavigationMenuItem>
                                     ))}
@@ -120,19 +122,26 @@ export function Navbar() {
                 <div className="absolute left-1/2 -translate-x-1/2 max-md:hidden">
                     {/* Navigation menu */}
                     <NavigationMenu>
-                        <NavigationMenuList className="gap-4">
+                        <NavigationMenuList className="gap-2">
                             {navigationItems.map((link, index) => (
                                 <NavigationMenuItem key={index}>
                                     <NavigationMenuLink
                                         active={isActiveRoute(link.href)}
                                         href={link.href}
-                                        className={`py-1.5 font-medium ${
+                                        className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 relative overflow-hidden ${
                                             isActiveRoute(link.href)
-                                                ? "bg-muted shadow-xl text-green-700"
-                                                : "text-muted-foreground hover:text-primary"
+                                                ? "bg-gradient-to-r from-blue-500/10 to-emerald-500/10 text-blue-600 dark:text-blue-400 shadow-lg border border-blue-200/30 dark:border-blue-800/30 py-[6.5px]"
+                                                : "text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-slate-50/50 dark:hover:from-blue-950/20 dark:hover:to-slate-950/20 hover:shadow-md"
                                         }`}
                                     >
-                                        {link.name}
+                                        {/* Shimmer effect for active link */}
+                                        {isActiveRoute(link.href) && (
+                                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400/20 to-transparent -translate-x-full animate-pulse rounded-lg" />
+                                        )}
+
+                                        <span className="relative z-10">
+                                            {link.name}
+                                        </span>
                                     </NavigationMenuLink>
                                 </NavigationMenuItem>
                             ))}
