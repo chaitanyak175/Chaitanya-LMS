@@ -18,6 +18,7 @@
 - **✉️ Email Notifications**: Automated email delivery for key events like user registration and course updates, powered by **Resend**.
 - **🔒 Type-Safe & Validated**: End-to-end type safety with TypeScript, along with robust form and environment variable validation using **Zod** and **T3 Env**.
 - **🛡️ Security-First**: Includes rate limiting and bot protection with **Arcjet** to secure sensitive endpoints.
+- **☁️ File Storage**: Secure file uploads and management for course content using **AWS S3**.
 
 ## 🛠️ Tech Stack
 
@@ -31,6 +32,7 @@
 | **Schema Validation** | [Zod](https://zod.dev/), [T3 Env](https://env.t3.gg/)                                                           |
 | **Email Service**     | [Resend](https://resend.com/)                                                                                   |
 | **Security**          | [Arcjet](https://arcjet.com/)                                                                                   |
+| **File Storage**      | [AWS S3](https://aws.amazon.com/s3/)                                                                            |
 | **Deployment**        | [Vercel](https://vercel.com/)                                                                                   |
 
 ## 🚀 Getting Started
