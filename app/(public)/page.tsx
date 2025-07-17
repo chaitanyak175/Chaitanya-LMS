@@ -1,9 +1,7 @@
 "use client";
 import { Badge } from "@/components/ui/badge";
-import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Marquee } from "@/components/ui/marquee";
-import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -530,37 +528,148 @@ export default function Home() {
                     className="text-center mb-16 px-4"
                     variants={itemVariants}
                 >
-                    <Badge
-                        variant="outline"
-                        className="mb-4 bg-blue-50 border-blue-200 text-blue-700 dark:bg-blue-950 dark:border-blue-800 dark:text-blue-300"
+                    <motion.div
+                        initial={{ scale: 0, rotate: -180 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{
+                            duration: 0.8,
+                            delay: 0.2,
+                            type: "spring",
+                            stiffness: 200,
+                            damping: 12,
+                        }}
+                        whileHover={{ scale: 1.05, rotate: 5 }}
+                        className="inline-block mb-4"
                     >
-                        <span className="mr-2">🎯</span>
-                        Why Choose Us
-                    </Badge>
-                    <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-slate-900 via-blue-800 to-slate-700 dark:from-white dark:via-blue-200 dark:to-gray-200 bg-clip-text text-transparent">
-                        Everything You Need to Succeed
-                    </h2>
-                    <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
+                        <Badge
+                            variant="outline"
+                            className="bg-blue-50 border-blue-200 text-blue-700 dark:bg-blue-950 dark:border-blue-800 dark:text-blue-300 px-4 py-2"
+                        >
+                            <motion.span
+                                className="mr-2"
+                                animate={{
+                                    rotate: [0, 10, -10, 0],
+                                    scale: [1, 1.1, 1],
+                                }}
+                                transition={{
+                                    duration: 3,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                }}
+                            >
+                                🎯
+                            </motion.span>
+                            Why Choose Us
+                        </Badge>
+                    </motion.div>
+
+                    <motion.h2
+                        className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-slate-900 via-blue-800 to-slate-700 dark:from-white dark:via-blue-200 dark:to-gray-200 bg-clip-text text-transparent"
+                        initial={{ y: 50, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                    >
+                        <motion.span
+                            className="inline-block"
+                            initial={{ x: -30, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            transition={{ duration: 0.6, delay: 0.5 }}
+                        >
+                            Everything You Need
+                        </motion.span>
+                        <br />
+                        <motion.span
+                            className="inline-block bg-gradient-to-r from-blue-600 via-emerald-600 to-indigo-600 dark:from-blue-400 dark:via-emerald-400 dark:to-indigo-400 bg-clip-text text-transparent"
+                            initial={{ x: 30, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            transition={{ duration: 0.6, delay: 0.7 }}
+                        >
+                            to Succeed
+                        </motion.span>
+                    </motion.h2>
+
+                    <motion.div
+                        className="w-24 h-1 mb-6 bg-gradient-to-r from-blue-500 to-emerald-500 rounded mx-auto"
+                        initial={{ width: 0, opacity: 0 }}
+                        animate={{ width: 96, opacity: 1 }}
+                        transition={{ duration: 1, delay: 0.9 }}
+                    />
+
+                    <motion.p
+                        className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto"
+                        initial={{ y: 30, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.6, delay: 1.1 }}
+                    >
                         Discover the features that make our platform the perfect
                         choice for your learning journey
-                    </p>
+                    </motion.p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full px-6">
+                <motion.div
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full px-6"
+                    variants={{
+                        hidden: { opacity: 0 },
+                        visible: {
+                            opacity: 1,
+                            transition: {
+                                delay: 1.3,
+                                staggerChildren: 0.2,
+                            },
+                        },
+                    }}
+                    initial="hidden"
+                    animate="visible"
+                >
                     {features.map((feature, index) => (
                         <motion.div
                             key={index}
-                            variants={cardVariants}
-                            whileHover="hover"
-                            className="group"
+                            variants={{
+                                hidden: {
+                                    y: 60,
+                                    opacity: 0,
+                                    scale: 0.8,
+                                    rotateY: -45,
+                                },
+                                visible: {
+                                    y: 0,
+                                    opacity: 1,
+                                    scale: 1,
+                                    rotateY: 0,
+                                    transition: {
+                                        type: "spring",
+                                        damping: 20,
+                                        stiffness: 300,
+                                        delay: index * 0.1,
+                                    },
+                                },
+                            }}
+                            whileHover={{
+                                y: -8,
+                                scale: 1.02,
+                                rotateY: 5,
+                                boxShadow:
+                                    "0 25px 50px rgba(59, 130, 246, 0.15)",
+                                transition: { duration: 0.3 },
+                            }}
+                            whileTap={{ scale: 0.98 }}
+                            className="group cursor-pointer"
                         >
                             <Card className="h-full hover:shadow-2xl transition-all duration-300 border border-slate-200/30 bg-gradient-to-br from-white via-blue-50/20 to-slate-50/20 dark:from-gray-900 dark:to-gray-800/50 backdrop-blur-sm group-hover:bg-gradient-to-br group-hover:from-blue-50/40 group-hover:to-slate-50/40 dark:group-hover:from-slate-800/20 dark:group-hover:to-blue-950/20 overflow-hidden relative">
                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+
+                                {/* Animated background overlay on hover */}
+                                <motion.div
+                                    className="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-emerald-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                    initial={false}
+                                />
+
                                 <CardHeader className="text-center relative z-10">
                                     <motion.div
                                         className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300"
                                         whileHover={{
                                             rotate: [0, -10, 10, -5, 0],
+                                            scale: 1.2,
                                         }}
                                         transition={{ duration: 0.5 }}
                                     >
@@ -575,10 +684,25 @@ export default function Home() {
                                         {feature.description}
                                     </p>
                                 </CardContent>
+
+                                {/* Decorative corner elements */}
+                                <motion.div
+                                    className="absolute top-3 right-3 w-2 h-2 bg-blue-400/40 rounded-full opacity-0 group-hover:opacity-100"
+                                    initial={false}
+                                    animate={{
+                                        scale: [1, 1.5, 1],
+                                        opacity: [0.4, 0.8, 0.4],
+                                    }}
+                                    transition={{
+                                        duration: 2,
+                                        repeat: Infinity,
+                                        ease: "easeInOut",
+                                    }}
+                                />
                             </Card>
                         </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </motion.section>
 
             {/* Stats Section - Empowering Learners Worldwide */}
