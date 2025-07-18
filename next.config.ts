@@ -19,11 +19,19 @@ const nextConfig: NextConfig = {
     },
 
     images: {
+        domains: [
+            "chaitanya-lms.fly.storage.tigris.dev",
+            "chaitanya-lms.t3.storage.dev",
+        ],
         remotePatterns: [
             {
                 hostname: "chaitanya-lms.fly.storage.tigris.dev",
                 port: "",
                 protocol: "https",
+            },
+            {
+                protocol: "https",
+                hostname: "chaitanya-lms.t3.storage.dev", // ✅ added this
             },
         ],
     },
